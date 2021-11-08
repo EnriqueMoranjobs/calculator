@@ -2,6 +2,7 @@ package com.emoran.calculadora;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,12 +14,14 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity {
     double numeroUno;
     double numeroDos;
+    double resultado;
     String operador;
 
 
 
 
     public TextView txtResultado;
+    public Button btn0;
     public Button btn1;
     public Button btn2;
     public Button btn3;
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         txtResultado = (TextView) findViewById(R.id.resultado);
+        btn0=(Button)findViewById(R.id.button0);
         btn1 = (Button) findViewById(R.id.button1);
         btn2 = (Button) findViewById(R.id.button2);
         btn3 = (Button) findViewById(R.id.button3);
@@ -85,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btn3.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 ;
@@ -147,6 +152,15 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
+        btn0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ;
+                txtResultado.setText(txtResultado.getText() + "0");
+            }
+
+
+        });
 
 
         btnSumar.setOnClickListener(new View.OnClickListener() {
@@ -154,7 +168,72 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                numeroUno=Double.parseDouble(txtResultado.getText().toString());
                operador="+";
-               txtResultado.setText(" ");
+               txtResultado.setText("");
+
+
+
+            }
+        });
+        btnRestar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                numeroUno=Double.parseDouble(txtResultado.getText().toString());
+                operador="-";
+                txtResultado.setText("");
+
+
+
+            }
+        });
+        btnMultiplicar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                numeroUno=Double.parseDouble(txtResultado.getText().toString());
+                operador="*";
+                txtResultado.setText("");
+
+
+
+            }
+        });
+        btnDividir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                numeroUno=Double.parseDouble(txtResultado.getText().toString());
+                operador="/";
+                txtResultado.setText("");
+
+
+
+            }
+        });
+
+        btnIgual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                numeroDos=Double.parseDouble(txtResultado.getText().toString());
+                if (operador.equals("+")){
+                    resultado=numeroUno+numeroDos;
+                }
+
+
+                else if (operador.equals("-")){
+                    numeroDos=Double.parseDouble(txtResultado.getText().toString());
+                    resultado=numeroUno-numeroDos;
+                }
+
+                else if (operador.equals("*")){
+                    numeroDos=Double.parseDouble(txtResultado.getText().toString());
+                    resultado=numeroUno*numeroDos;
+                }
+                else if (operador.equals("/")){
+                    numeroDos=Double.parseDouble(txtResultado.getText().toString());
+                    resultado=numeroUno/numeroDos;
+
+                }
+                txtResultado.setText(resultado+"");
+
             }
         });
 
@@ -164,5 +243,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
     }
+
+
 }
