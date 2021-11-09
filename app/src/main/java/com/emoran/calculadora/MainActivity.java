@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     double numeroDos;
     double resultado;
     String operador;
+    String cadena;
+    String cadenaNueva;
 
 
 
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     public Button btnMultiplicar;
     public Button btnDividir;
     public Button btnIgual;
+    public Button btnDel;
+    public Button btnC;
 
 
 
@@ -64,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         btnMultiplicar = (Button) findViewById(R.id.buttonMultiplicar);
         btnDividir = (Button) findViewById(R.id.idbarra);
         btnIgual=(Button)findViewById(R.id.buttonIgual);
+        btnDel=(Button) findViewById(R.id.iddel);
+        btnC=(Button) findViewById(R.id.idc);
 
 
 
@@ -236,6 +242,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        btnDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtResultado.setText("");
+            }
+        });
+        btnC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cadena=(String)txtResultado.getText();
+                cadenaNueva=cadena.substring(0,cadena.length()-1);
+                txtResultado.setText(cadenaNueva);
+                }
+        });
+
+
 
 
 
